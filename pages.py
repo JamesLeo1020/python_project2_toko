@@ -68,7 +68,7 @@ def product_input_screen():
                         "ID barang tidak perlu diinputkan, karena akan digenerate secara otomatis")
     # this is list comprehension, if you are confused about it just google
     current_max_id_barang = max(
-        [int(x.removeprefix("barang_")) for x in model.products.keys()], default=1)
+        [int(x.removeprefix("barang_")) for x in model.products.keys()], default=0)
     # id_barang_new is current max id_barang + 1 (increment from the current max)
     id_barang_int_new = current_max_id_barang + 1
     id_barang_new = "barang_"+str(id_barang_int_new)
@@ -252,7 +252,7 @@ def transaksi_input_screen(is_new=True):
         model.temporary_transaction = {}
         # this is list comprehension, if you are confused about it just google
         current_max_id_transaksi = max(
-            [int(x.removeprefix("transaksi_")) for x in model.transactions.keys()], default=1)
+            [int(x.removeprefix("transaksi_")) for x in model.transactions.keys()], default=0)
         id_transaksi_int_new = current_max_id_transaksi + 1
         id_transaksi_new = "transaksi_"+str(id_transaksi_int_new)
     else:
@@ -325,9 +325,9 @@ def transaksi_show_screen(id_transaksi=None, id_barang=None):
         sentences_list.append("")
         sentences_list.append("ID Transaksi: "+id_transaksi)
         sentences_list.append("Total transaksi setelah diskon: "+locale.currency(
-            model.transactions[id_transaksi]["total_harga"], grouping=True))
+            your_function.calculateTotalPriceAfterDiscount(total), grouping=True)) #-------------------------------------- 
         sentences_list.append("Diskon: "+locale.currency(total -
-                              model.transactions[id_transaksi]["total_harga"], grouping=True))
+                              your_function.calculateTotalPriceAfterDiscount(total), grouping=True)) #-------------------#
         sentences_list.append("")
         sentences_list.append("Detail Transaksi")
         sentences_list.append("")
