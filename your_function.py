@@ -1,7 +1,14 @@
+import model
 def addProduct(products, id_barang_new, nama_barang, harga_barang):
     # this function doesn't need return value
     # modify this pass with your own implementation
-    products[id_barang_new] ={
+    model.products[id_barang_new] ={
+        "id_barang": id_barang_new,
+        "nama_barang": nama_barang,
+        "harga_barang": harga_barang,
+    }
+
+    model.search_products[id_barang_new] ={
         "id_barang": id_barang_new,
         "nama_barang": nama_barang,
         "harga_barang": harga_barang,

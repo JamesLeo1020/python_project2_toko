@@ -117,7 +117,7 @@ def product_show_screen(id_barang=None):
             "Harga Barang: "+locale.currency(model.products[id_barang]["harga_barang"], grouping=True))
         sentences_list.append("")
         sentences_list.append(
-            "Jumlah data "+str(len(model.search_products))+", Ketik < dan > utk pindah page data")
+            "Jumlah data "+str(len(model.products))+", Ketik < dan > utk pindah page data")
         sentences_list.append("Ketik 1 untuk hapus data barang")
         sentences_list.append("Ketik 2 untuk edit data barang")
         sentences_list.append("Ketik 3 untuk input data barang")
@@ -146,6 +146,7 @@ def product_show_screen(id_barang=None):
         if is_okay == "y":
             # ------------------------ TUGAS < hapus product yang memiliki id tertentu dari dictionary model.products menggunakan variable id_barang
             del model.products[id_barang]
+            del model.search_products[id_barang]
             # ------------------------ TUGAS >
             product_show_screen()
         else:
